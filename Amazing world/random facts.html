@@ -1,0 +1,78 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body background="./step16.gif" 
+        style=" background-color: #ffffcc; margin: 30px 70px;padding: 0px;">
+        <h2 style=" text-align:center; color: rgb(255, 255, 255);"><i><u>Amazing Facts</u></i></h2>
+        <br><br>
+        <form class="search" action="">
+            
+            
+            <button type="submit" class="btn btn-secondary" style="margin:0 45%;">Amaze Yourself !!</button>
+        </form>
+
+       <p id="output" style="font-size: x-large; font-family: Arial, Helvetica, sans-serif; color: rgb(252, 250, 253); font-weight: bolder;"></p>
+       <p id="output2" style="font-size: xx-large; font-weight: bold; color: rgb(255, 255, 255);"></p>
+       <br><br><br><br><br>
+        <section>
+            <h2 style="text-align:center; color: tomato; font-style: italic;"><u><b>Amazing Facts Videos</b></u></h2><BR>
+                <iframe width="450" height="315" src="https://www.youtube.com/embed/y0mx9fc7GAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <iframe width="450" height="315" src="https://www.youtube.com/embed/FkQWpQd9Zdo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <iframe width="470" height="315" src="https://www.youtube.com/embed/NfFEl1znlq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <iframe width="450" height="315" src="https://www.youtube.com/embed/_oCgtA9E6YI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <iframe width="450" height="315" src="https://www.youtube.com/embed/l9iIpRXqj5s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <iframe width="470" height="315" src="https://www.youtube.com/embed/phpV_0Oi7lk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </section>
+
+    
+        <script>
+            const search = document.querySelector('.search');
+            
+            const newsList = document.querySelector('.news-list');
+            console.log(search);
+    
+            search.addEventListener('submit', retrieve)
+    
+            function retrieve(e){
+    
+                e.preventDefault();
+                
+                fetch("https://numbersapi.p.rapidapi.com/random/trivia?max=20&fragment=true&min=10&json=true", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "abbe40cc46msh2f359e077ddb8e4p1c35cbjsn93133bd22b12",
+		"x-rapidapi-host": "numbersapi.p.rapidapi.com"
+	}
+})
+.then(response => {
+    return response.json();
+	console.log(response);
+}).then((data)=>{
+    console.log(data)
+    let a = data.text;
+    document.getElementById("output").innerHTML= a;
+    document.getElementById("output2").innerHTML=data.number;
+
+})
+.catch(err => {
+	console.error(err);
+});
+    
+            }
+
+           
+        </script>
+    </body>
+    </html>
+    
